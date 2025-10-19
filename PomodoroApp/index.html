@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <div class="timer" id="timer">
-            <h2 id="displayTime">25:00</h2>
+            <h2 id="displayTime">00:06</h2>
         </div>
         <div class="buttons">
             <button id="start" onclick="watchStart()">Start</button>
@@ -20,23 +20,30 @@
 
     <script>
         let time = document.getElementById("displayTime");
-        let [minutes, seconds] = [25, 60];
+        let [minutes, seconds] = [0, 6];
         let timer = null;
 
         function watchStart() {
             if (timer !== null) {
                 clearInterval(timer);
             }
-
             timer = setInterval(()=>{
+                if(minutes === 0 && seconds === 0) {
+                    clearInterval(timer);
+                    alert("Times up");
+                    watchReset();
+                    return;
+                }
                 seconds--;
-                if (seconds == 0) {
-                    seconds = 60;
+                if (seconds < 0) {
+                    seconds = 59;
                     minutes--;
                 }
-                time.innerText = ((minutes < 10) ? "0" : "") + minutes + ":" + ((seconds != 60) ? (((seconds < 10) ? "0" : "") + seconds) : "00") ;
+                
+                time.innerText = ((minutes < 10) ? "0" : "") + minutes + ":" + ((seconds < 10) ? "0" : "") + seconds ;
             }, 1000)
         }
+        
 
         function watchStop() {
             clearInterval(timer);
@@ -44,8 +51,8 @@
 
         function watchReset() {
             clearInterval(timer);
-            [minutes, seconds] = [25,60];
-            time.innerText = "25:00";
+            [minutes, seconds] = [0,6];
+            time.innerText = "00:06";
         }
         
     </script>
