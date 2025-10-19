@@ -8,8 +8,15 @@
 </head>
 <body>
     <div class="container">
+        <div class="ask" id="ask">
+            <span id="lable">
+                <label for="inputTime">Enter Timer :</label>
+            </span>
+            <input type="number" placeholder="(in mins)" id="inputTime" value = ""/>
+            <button id="setTimer" onclick="updateTimer()">Set</button>
+        </div>
         <div class="timer" id="timer">
-            <h2 id="displayTime">00:06</h2>
+            <h2 id="displayTime">00:00</h2>
         </div>
         <div class="buttons">
             <button id="start" onclick="watchStart()">Start</button>
@@ -19,10 +26,16 @@
     </div>
 
     <script>
+        let userinput;
         let time = document.getElementById("displayTime");
-        let [minutes, seconds] = [0, 6];
+        let [minutes, seconds] = [0,0];
         let timer = null;
 
+        function updateTimer() {
+            userinput = parseInt(document.getElementById('inputTime').value);
+            time.innerText = ((userinput < 10) ? "0" : "") + userinput + ":00";
+            [minutes, seconds] = [userinput, 0]
+        }
         function watchStart() {
             if (timer !== null) {
                 clearInterval(timer);
@@ -34,13 +47,13 @@
                     watchReset();
                     return;
                 }
+                time.innerText = ((minutes < 10) ? "0" : "") + minutes + ":" + ((seconds < 10) ? "0" : "") + seconds ;
                 seconds--;
                 if (seconds < 0) {
                     seconds = 59;
                     minutes--;
                 }
                 
-                time.innerText = ((minutes < 10) ? "0" : "") + minutes + ":" + ((seconds < 10) ? "0" : "") + seconds ;
             }, 1000)
         }
         
@@ -51,8 +64,9 @@
 
         function watchReset() {
             clearInterval(timer);
-            [minutes, seconds] = [0,6];
-            time.innerText = "00:06";
+            userinput = parseInt(document.getElementById('inputTime').value);;
+            [minutes, seconds] = [userinput, 0];
+            time.innerText = ((userinput < 10) ? "0" : "") + userinput + ":00";
         }
         
     </script>

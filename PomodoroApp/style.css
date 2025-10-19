@@ -40,7 +40,20 @@ body {
     font-weight: normal;
 }
 
-.buttons button {
+#ask #lable {
+    color: #fff;
+    font-size: 16px;;
+}
+#inputTime {
+    border: none;
+    outline: none;
+    padding: 10px;
+    border-radius: 4px;
+    max-width: 120px;
+}
+
+
+.buttons button , #setTimer{
     font-size: 16px;
     background-color: #fff;
     border: none;
