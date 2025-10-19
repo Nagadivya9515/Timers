@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="timer" id="timer">
+            <h2 id="displayTime">25:00</h2>
+        </div>
+        <div class="buttons">
+            <button id="start" onclick="watchStart()">Start</button>
+            <button id="stop" onclick="watchStop()">Stop</button>
+            <button id="reset" onclick="watchReset()">Reset</button>
+        </div>
+    </div>
+
+    <script>
+        let time = document.getElementById("displayTime");
+        let [minutes, seconds] = [25, 60];
+        let timer = null;
+
+        function watchStart() {
+            if (timer !== null) {
+                clearInterval(timer);
+            }
+
+            timer = setInterval(()=>{
+                seconds--;
+                if (seconds == 0) {
+                    seconds = 60;
+                    minutes--;
+                }
+                time.innerText = ((minutes < 10) ? "0" : "") + minutes + ":" + ((seconds != 60) ? (((seconds < 10) ? "0" : "") + seconds) : "00") ;
+            }, 1000)
+        }
+
+        function watchStop() {
+            clearInterval(timer);
+        }
+
+        function watchReset() {
+            clearInterval(timer);
+            [minutes, seconds] = [25,60];
+            time.innerText = "25:00";
+        }
+        
+    </script>
+</body>
+</html>
