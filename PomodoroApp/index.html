@@ -1,74 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pomodoro</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div class="container">
-        <div class="ask" id="ask">
-            <span id="lable">
-                <label for="inputTime">Enter Timer :</label>
-            </span>
-            <input type="number" placeholder="(in mins)" id="inputTime" value = ""/>
-            <button id="setTimer" onclick="updateTimer()">Set</button>
-        </div>
-        <div class="timer" id="timer">
-            <h2 id="displayTime">00:00</h2>
-        </div>
-        <div class="buttons">
-            <button id="start" onclick="watchStart()">Start</button>
-            <button id="stop" onclick="watchStop()">Stop</button>
-            <button id="reset" onclick="watchReset()">Reset</button>
-        </div>
+      <div class="ask" id="ask">
+        <span id="lable">
+          <label for="inputTime">Enter Timer :</label>
+        </span>
+        <input type="number" placeholder="(in mins)" id="inputTime" value="" />
+        <button id="setTimer" onclick="updateTimer()">Set</button>
+      </div>
+      <div class="timer" id="timer">
+        <h2 id="displayTime">00:00</h2>
+      </div>
+      <div class="buttons">
+        <button id="start" onclick="watchStart()">Start</button>
+        <button id="stop" onclick="watchStop()">Stop</button>
+        <button id="reset" onclick="watchReset()">Reset</button>
+      </div>
     </div>
 
     <script>
-        let userinput;
-        let time = document.getElementById("displayTime");
-        let [minutes, seconds] = [0,0];
-        let timer = null;
+      let userinput;
+      let time = document.getElementById("displayTime");
+      let [minutes, seconds] = [0, 0];
+      let timer = null;
 
-        function updateTimer() {
-            userinput = parseInt(document.getElementById('inputTime').value);
-            time.innerText = ((userinput < 10) ? "0" : "") + userinput + ":00";
-            [minutes, seconds] = [userinput, 0]
+      function updateTimer() {
+        userinput = parseInt(document.getElementById("inputTime").value) || 0;
+        if (userinput <= 0) {
+          alert("Please enter a valid number of minutes!");
+          userinput.innerText = 0;
+          return;
         }
-        function watchStart() {
-            if (timer !== null) {
-                clearInterval(timer);
-            }
-            timer = setInterval(()=>{
-                if(minutes === 0 && seconds === 0) {
-                    clearInterval(timer);
-                    alert("Times up");
-                    watchReset();
-                    return;
-                }
-                time.innerText = ((minutes < 10) ? "0" : "") + minutes + ":" + ((seconds < 10) ? "0" : "") + seconds ;
-                seconds--;
-                if (seconds < 0) {
-                    seconds = 59;
-                    minutes--;
-                }
-                
-            }, 1000)
+        time.innerText = (userinput < 10 ? "0" : "") + userinput + ":00";
+        [minutes, seconds] = [userinput, 0];
+      }
+      function watchStart() {
+        if (timer !== null) {
+          clearInterval(timer);
         }
-        
-
-        function watchStop() {
+        timer = setInterval(() => {
+          if (minutes === 0 && seconds === 0) {
             clearInterval(timer);
-        }
+            alert("Times up");
+            watchReset();
+            return;
+          }
+          time.innerText =
+            (minutes < 10 ? "0" : "") +
+            minutes +
+            ":" +
+            (seconds < 10 ? "0" : "") +
+            seconds;
+          seconds--;
+          if (seconds < 0) {
+            seconds = 59;
+            minutes--;
+          }
+        }, 1000);
+      }
 
-        function watchReset() {
-            clearInterval(timer);
-            userinput = parseInt(document.getElementById('inputTime').value);;
-            [minutes, seconds] = [userinput, 0];
-            time.innerText = ((userinput < 10) ? "0" : "") + userinput + ":00";
-        }
-        
+      function watchStop() {
+        clearInterval(timer);
+      }
+
+      function watchReset() {
+        clearInterval(timer);
+        timer = null;
+        userinput = parseInt(document.getElementById("inputTime").value) || 0;
+        [minutes, seconds] = [userinput, 0];
+        time.innerText = (userinput < 10 ? "0" : "") + userinput + ":00";
+      }
     </script>
-</body>
+  </body>
 </html>
