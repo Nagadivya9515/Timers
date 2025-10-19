@@ -1,0 +1,85 @@
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+
+body {
+    /* background-color: rgb(241, 241, 241); */
+    background: linear-gradient(to right, rgb(255, 223, 228), rgb(249, 239, 255)) ;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 equal columns */
+    width: 80%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    overflow: hidden;
+    gap: 1rem; /* optional: adds space between grid items */
+}
+
+
+.task-section {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 20px 40px;
+    margin: 10px auto;
+    border-radius: 20px;
+    justify-content: space-around;
+    box-sizing: border-box;
+    min-width: 460px;
+}
+
+.task-section table {
+    border-collapse: collapse;
+    gap: 10px;
+    align-items: center;
+    text-align: center;
+}
+
+table tr td {
+    font-weight: normal;
+}
+h2 {
+    margin: 0;
+    margin-bottom: 15px;
+    text-align: center;
+    color: rgb(142, 104, 237);
+
+}
+
+input, select {
+    border: 1pt solid lightgrey;
+    outline:  none;
+    padding: 5px;
+    border-radius: 4px;
+    color: darkgrey;
+
+}
+input[type="date"] {
+    width: 100px;
+}
+
+input:active, input:focus {
+    color: black;
+}
+
+button {
+    display: block;
+    margin: 0 auto;
+    border: none;
+    outline: none;
+    padding: 6px 0px;
+    border-radius: 6px;
+    background-color: rgb(142, 104, 237);
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 1.2rem;
+    min-width: 120px;
+    max-width: 140px;
+}

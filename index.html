@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="task-section">
+            <h2>Planned Task</h2>
+            <table>
+                <tr>
+                    <td>Task Name</td>
+                    <td>Category</td>
+                    <td>Date</td>
+                </tr>
+                <tr>
+                    <td><input type="text"></td>
+                    <td>
+                    <select name="category" id="category">
+                        <option value="work">Work</option>
+                        <option value="personal">Personal</option>
+                        <option value="urgent">Urgent</option>
+                        <option value="other"> Other</option>
+                    </select>
+                    </td>
+                    <td><input type="date"></td>
+                </tr>
+            </table>
+            <button type="submit">Add Task</button>
+        </div>
+        <div class="task-section">
+            <h2>Checklist Task</h2>
+            <table>
+                <tr>
+                    <td>Task Name</td>
+                    <td>Date</td>
+                </tr>
+                <tr>
+                    <td><input type="text"></td>
+                    <td><input type="date"></td>
+                </tr>
+            </table>
+            <button type="submit">Add Task</button>
+        </div>
+        <div class="task-section">
+            <h2>Alarm Task</h2>
+            <table>
+                <tr>
+                    <td>Task Name</td>
+                    <td>Time</td>
+                </tr>
+                <tr>
+                    <td><input type="text"></td>
+                    <td><input type="number"></td>
+                </tr>
+            </table>
+            <button type="submit">Add Task</button>
+        </div>
+        <div class="task-section">
+            <h2>Timer Task</h2>
+            <table>
+                <tr>
+                    <td>Task Name</td>
+                </tr>
+                <tr>
+                    <td><input type="text"></td>
+                </tr>
+            </table>
+            <button type="submit">Start Timer</button>
+        </div>
+    </div>
+</body>
+</html>
