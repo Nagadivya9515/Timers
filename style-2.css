@@ -1,0 +1,86 @@
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+
+body {
+    /* background-color: rgb(241, 241, 241); */
+    background: linear-gradient(to right, rgb(255, 223, 228), rgb(249, 239, 255)) ;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 equal columns */
+    width: 80%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    overflow: hidden;
+    gap: 1rem; /* optional: adds space between grid items */
+}
+.task-section {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.task-section h2 {
+    margin-bottom: 10px;
+}
+
+/* Inputs and selects fill their cells */
+.task-grid input,
+.task-grid select {
+    width: 100%;
+    padding: 6px;
+    box-sizing: border-box;
+}
+
+.task-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Default: 2 columns */
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+}
+
+/* Make the form that contains the digital clock one-column */
+.task-grid:has(.digital-clock) {
+    /* grid-template-columns: 1fr; */
+}
+
+/* Optional styling for clock and button */
+.digital-clock {
+    font-size: 2rem;
+    font-family: 'Courier New', monospace;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.task-grid button {
+    margin-top: 10px;
+    padding: 8px 12px;
+    cursor: pointer;
+    grid-column: span 2;
+}
+
+/* Make button span one column for the one-column layout */
+.task-grid:has(.digital-clock) button {
+    grid-column: span 1;
+}
+
+/* Optional: responsive layout for small screens */
+@media (max-width: 600px) {
+    .task-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .task-grid button {
+        grid-column: span 1;
+    }
+}
+
+

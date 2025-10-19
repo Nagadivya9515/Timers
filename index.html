@@ -4,73 +4,101 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-2.css">
 </head>
 <body>
     <div class="container">
         <div class="task-section">
-            <h2>Planned Task</h2>
-            <table>
-                <tr>
-                    <td>Task Name</td>
-                    <td>Category</td>
-                    <td>Date</td>
-                </tr>
-                <tr>
-                    <td><input type="text"></td>
-                    <td>
-                    <select name="category" id="category">
-                        <option value="work">Work</option>
-                        <option value="personal">Personal</option>
-                        <option value="urgent">Urgent</option>
-                        <option value="other"> Other</option>
-                    </select>
-                    </td>
-                    <td><input type="date"></td>
-                </tr>
-            </table>
-            <button type="submit">Add Task</button>
-        </div>
+    <h2>Planned Task</h2>
+    <form class="task-grid">
+        <label>Task Name</label>
+        
+
+        <input type="text" name="task-name">
+        <label>Category</label>
+        
+        <select name="category" id="category">
+            <option value="work">Work</option>
+            <option value="personal">Personal</option>
+            <option value="urgent">Urgent</option>
+            <option value="other">Other</option>
+        </select>
+        <label>Date</label>
+        <input type="date" name="task-date">
+
+        <button type="submit">Add Task</button>
+    </form>
+</div>
+
         <div class="task-section">
-            <h2>Checklist Task</h2>
-            <table>
-                <tr>
-                    <td>Task Name</td>
-                    <td>Date</td>
-                </tr>
-                <tr>
-                    <td><input type="text"></td>
-                    <td><input type="date"></td>
-                </tr>
-            </table>
-            <button type="submit">Add Task</button>
-        </div>
-        <div class="task-section">
-            <h2>Alarm Task</h2>
-            <table>
-                <tr>
-                    <td>Task Name</td>
-                    <td>Time</td>
-                </tr>
-                <tr>
-                    <td><input type="text"></td>
-                    <td><input type="number"></td>
-                </tr>
-            </table>
-            <button type="submit">Add Task</button>
-        </div>
-        <div class="task-section">
-            <h2>Timer Task</h2>
-            <table>
-                <tr>
-                    <td>Task Name</td>
-                </tr>
-                <tr>
-                    <td><input type="text"></td>
-                </tr>
-            </table>
-            <button type="submit">Start Timer</button>
-        </div>
+    <h2>Checklist Task</h2>
+    <form class="task-grid">
+        <label>Task Name</label>
+
+        <input type="text" name="checklist-name">
+        <label>Date</label>
+        
+        <input type="date" name="checklist-date">
+
+        <button type="submit">Add Task</button>
+    </form>
+</div>
+
+<div class="task-section">
+    <h2>Alarm Task</h2>
+    <form class="task-grid">
+        <label>Task Name</label>
+
+        <input type="text" name="alarm-name">
+        <label>Time</label>
+        
+        <input type="number" name="alarm-time" placeholder="Set Time">
+
+        <button type="submit">Add Task</button>
+    </form>
+</div>
+
+<div class="task-section">
+    <h2>Timer Task</h2>
+    <div class="task-grid">
+        <label>Task Name</label>
+        <input type="text" name="timer-task-name">
+
+        <div class="digital-clock" id="digital-clock">00:00:00</div>
+        <div></div>
+        <button type="submit" id="start-timer-btn">Start Timer</button>
+        <button type="submit" id="start-timer-btn">Reset Timer</button>
     </div>
+</div>
+
+    </div>
+    <script>
+let timerInterval;
+let seconds = 0;
+let running = false;
+
+document.getElementById('start-timer-btn').addEventListener('click', function() {
+    const clock = document.getElementById('digital-clock');
+    const button = this;
+
+    if (!running) {
+        running = true;
+        button.textContent = "Stop Timer";
+
+        timerInterval = setInterval(() => {
+            seconds++;
+            let hrs = String(Math.floor(seconds / 3600)).padStart(2, '0');
+            let mins = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0');
+            let secs = String(seconds % 60).padStart(2, '0');
+            clock.textContent = `${hrs}:${mins}:${secs}`;
+        }, 1000);
+    } else {
+        running = false;
+        button.textContent = "Start Timer";
+        clearInterval(timerInterval);
+    }
+});
+</script>
+
 </body>
 </html>

@@ -68,7 +68,6 @@ input:active, input:focus {
 }
 
 button {
-    display: block;
     margin: 0 auto;
     border: none;
     outline: none;
@@ -82,4 +81,32 @@ button {
     font-size: 1.2rem;
     min-width: 120px;
     max-width: 140px;
+}
+
+.task-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.task-grid label {
+    font-weight: bold;
+}
+
+.task-grid input,
+.task-grid select {
+    width: 100%;
+    padding: 6px;
+    box-sizing: border-box;
+}
+
+/* Make the button span all 3 columns */
+.task-grid button {
+    grid-column: span 3;
+    margin-top: 10px;
+    padding: 8px 12px;
+    cursor: pointer;
 }
