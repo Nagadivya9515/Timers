@@ -142,4 +142,15 @@ body {
     .textbox small {
         margin-bottom: 10px;
     }
+    .right-container {
+        left: 0;
+    }
+    .left-container input[type="checkbox"], .right-container input[type="checkbox"] {
+        left: 10px;
+    }
+    .left-container-arrow , .right-container-arrow{
+        border-right: 15px solid #fff;
+        border-left: 0;
+        left: -15px;
+    }
 }

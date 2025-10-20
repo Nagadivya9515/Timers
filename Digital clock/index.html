@@ -18,20 +18,6 @@
         </div>
       </div>
     </div>
-    <script>
-        let hrs = document.getElementById("hrs");
-        let mins = document.getElementById("min");
-        let sec = document.getElementById("sec");
-
-        setInterval(() => {
-            let time = new Date();
-            hrs.innerText = ((time.getHours() < 10) ? "0" : "") + time.getHours();
-            mins.innerText = ((time.getMinutes() < 10) ? "0" : "") + time.getMinutes();
-            sec.innerText = ((time.getSeconds() < 10) ? "0" : "") + time.getSeconds();
-        }, 1000)
-
-        
-
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
