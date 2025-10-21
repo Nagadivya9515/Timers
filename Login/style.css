@@ -1,0 +1,45 @@
+.body-container::before {
+    content: 'Techdialog';
+    font-size: 32px;
+    /* align-items: top; */
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #fff;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    /* height: 40px; */
+    width: 50%;
+    position: absolute;
+    left:25%;
+    top: 120px;
+    background-color: rgb(58, 160, 99);
+}
+
+.body-container {
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 100px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 10 0 rgbs(0,0,0,0.4);
+}
+
+form * {
+    width: 100%;
+    display: block;
+    font-size: 16px;
+    padding: 10px 4px ;
+}
+
+form button {
+    margin-top: 30px;
+    font-weight: bold;
+    color: rgb(58, 160, 99);
+}
+
+form button:hover {
+    background-color: rgb(58, 160, 99);
+    color: #fff;
+    transition: all 0.6s ease-in-out;
+}
