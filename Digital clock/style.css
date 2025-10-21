@@ -22,7 +22,7 @@
 }
 
 
-.container {
+.container-2 {
     width: 500px;
     height: 180px;
     position: absolute;
@@ -32,7 +32,7 @@
 }
 
 
-.container::before {
+.container-2::before {
     content : '';
     width: 100px;
     height: 100px;
@@ -43,7 +43,7 @@
     z-index: -1;
 }
 
-.container::after {
+.container-2::after {
     content: '';
     width: 120px;
     height: 120px;
